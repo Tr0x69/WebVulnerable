@@ -1,0 +1,6 @@
+@WebVulnerable_HostAddress = http://localhost:5213
+
+GET {{WebVulnerable_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
