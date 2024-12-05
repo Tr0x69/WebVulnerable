@@ -2,7 +2,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(
+    option => option.ReturnHttpNotAcceptable = true //will not accept any data except json
+).AddNewtonsoftJson()//nuget package to work with patch
+//.AddXmlDataContractSerializerFormatters(); //add to accept xml format
+; 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
