@@ -1,9 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using WebVulnerable.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers(
-    option => option.ReturnHttpNotAcceptable = true //will not accept any data except json
+    //option => option.ReturnHttpNotAcceptable = true //will not accept any data except json
 ).AddNewtonsoftJson()//nuget package to work with patch
 //.AddXmlDataContractSerializerFormatters(); //add to accept xml format
 ; 
